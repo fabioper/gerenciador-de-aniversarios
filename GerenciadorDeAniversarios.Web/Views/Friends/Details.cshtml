@@ -1,0 +1,22 @@
+﻿@model GerenciadorDeAniversarios.Domain.Entities.Friend
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<section class="section">
+    <header class="section__header">
+        <div class="container">
+            <h2 class="section__title">@Model.Name</h2>
+            <div class="btn-group">
+                @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn"} )
+                @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn--optional" })
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="friend__info"></div>
+    </div>
+</section>
