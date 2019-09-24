@@ -11,9 +11,11 @@ namespace GerenciadorDeAniversarios.Domain.Contexts
 {
     public class FriendsContext : DbContext
     {
+        private const string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\fabioper\workspace\faculdade\dotnet\fundamentos-csharp\gerenciador-de-aniversarios\GerenciadorDeAniversarios.Domain\FriendsDB.mdf;Integrated Security=True";
+
         public DbSet<Friend> Friends { get; set; }
 
-        public FriendsContext() : base(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\fabio\workspace\faculdade\dotnet\gerenciador-de-aniversarios\GerenciadorDeAniversarios.Domain\Data.mdf;Integrated Security=True")
+        public FriendsContext() : base(ConnectionString)
         {
 
         }
