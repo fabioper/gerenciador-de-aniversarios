@@ -26,7 +26,7 @@
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.Name)</td>
                 <td>@Html.DisplayFor(modelItem => item.FamilyName)</td>
-                <td>@Html.DisplayFor(modelItem => item.Birthdate)</td>
+                <td>@item.Birthdate.ToShortDateString()</td>
                 <td>
                     <ul class="table__actions">
                         <li>@Html.ActionLink("Editar", "Edit", new { id=item.Id })</li>
