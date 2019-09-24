@@ -17,6 +17,18 @@
     </header>
 
     <div class="container">
-        <div class="friend__info"></div>
+        <div class="friend__info">
+            <p>
+                <strong>Nome Completo:</strong> @Model.Name @Model.FamilyName
+            </p>
+
+            <p>
+                <strong>Aniversário: </strong> @Model.Birthdate.ToShortDateString()
+            </p>
+
+            <p>
+                <strong>Quantos faltam:</strong> @Model.DaysUntilBirthday()
+            </p>
+        </div>
     </div>
 </section>

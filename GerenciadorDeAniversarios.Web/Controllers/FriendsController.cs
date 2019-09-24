@@ -1,6 +1,7 @@
 ﻿using GerenciadorDeAniversarios.Domain.Entities;
 using GerenciadorDeAniversarios.Domain.Interfaces;
 using GerenciadorDeAniversarios.Domain.Repositories;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -15,11 +16,23 @@ namespace GerenciadorDeAniversarios.Web.Controllers
             db = FriendsRepository.Instance;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string query)
         {
             var friends = db.GetAll().ToList();
 
-            return View(friends);
+            if (query != null)
+            {
+                if (query == "")
+                    return View(friends);
+
+                var result = db.GetByKeyword(query);
+                return View(result);
+            }
+
+            var friendsCelebratingToday = friends.Where(f => f.Birthdate.ToShortDateString()
+                                                             == DateTime.Today.ToShortDateString());
+
+            return View(friendsCelebratingToday);
         }
 
         public ActionResult Details(int id)

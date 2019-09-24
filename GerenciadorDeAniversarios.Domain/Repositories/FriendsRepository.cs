@@ -35,16 +35,6 @@ namespace GerenciadorDeAniversarios.Domain.Repositories
             return query;
         }
 
-        //public IEnumerable<Friend> GetAllCelebratingToday()
-        //{
-        //    var query = GetAll();
-
-        //    var friendsCelebratingToday = query.Where(f => f.Birthdate.ToShortDateString()
-        //                                                   == DateTime.Today.ToShortDateString());
-
-        //    return friendsCelebratingToday;
-        //}
-
         public void Insert(Friend entity)
         {
             var friend = new Friend()
@@ -78,6 +68,12 @@ namespace GerenciadorDeAniversarios.Domain.Repositories
         public Friend GetById(int id)
         {
             return db.Friends.Find(id);
+        }
+
+        public IEnumerable<Friend> GetByKeyword(string query)
+        {
+            return db.Friends.Where(f => f.Name.Contains(query)
+                                         || f.FamilyName.Contains(query));
         }
     }
 }

@@ -13,5 +13,12 @@ namespace GerenciadorDeAniversarios.Domain.Entities
 
         [Required]
         public DateTime Birthdate { get; set; }
+
+        public int DaysUntilBirthday()
+        {
+            var result = Birthdate - DateTime.Now;
+
+            return result.Days;
+        }
     }
 }

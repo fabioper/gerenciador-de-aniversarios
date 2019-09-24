@@ -8,8 +8,13 @@
 <section class="section">
     <header class="section__header">
         <div class="container">
-            <h2 class="section__title">Amigos</h2>
-            @Html.ActionLink("Novo Amigo", "Create", null, new { @class = "btn" } )
+            <h2 class="section__title">Aniversariantes de Hoje (@DateTime.Today.ToShortDateString())</h2>
+            @using (Html.BeginForm("Index", "Friends", FormMethod.Get, new { @class = "form-search" }))
+            {
+                <input class="input" name="query" placeholder="Pesquise ou deixe em branco para listar todos" />
+                <button class="btn btn--optional btn-search" type="submit">Pesquisar</button>
+            }
+            @Html.ActionLink("Novo Amigo", "Create", null, new { @class = "btn" })
         </div>
     </header>
 
@@ -22,20 +27,21 @@
                 <th>Ações</th>
             </tr>
         
-        @foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.Name)</td>
                 <td>@Html.DisplayFor(modelItem => item.FamilyName)</td>
                 <td>@item.Birthdate.ToShortDateString()</td>
                 <td>
                     <ul class="table__actions">
-                        <li>@Html.ActionLink("Editar", "Edit", new { id=item.Id })</li>
-                        <li>@Html.ActionLink("Detalhes", "Details", new { id=item.Id })</li>
-                        <li>@Html.ActionLink("Deletar", "Delete", new { id=item.Id })</li>
+                        <li>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</li>
+                        <li>@Html.ActionLink("Detalhes", "Details", new { id = item.Id })</li>
+                        <li>@Html.ActionLink("Deletar", "Delete", new { id = item.Id })</li>
                     </ul>
                 </td>
             </tr>
-        }
+            }
         </table>
     </div>
 </section>

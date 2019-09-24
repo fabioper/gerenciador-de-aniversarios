@@ -10,5 +10,6 @@ namespace GerenciadorDeAniversarios.Domain.Interfaces
         void Update(T entity);
         IEnumerable<T> GetAll();
         T GetById(int id);
+        IEnumerable<T> GetByKeyword(string query);
     }
 }
